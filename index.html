@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Memory Game</title>
+</head>
+<body>
+    <main>
+        <section class="jeu">
+            <h1>Jeu de Memory</h1>
+            <table>
+                <tr>
+                    <td><button id="0" onclick="retourner(0)" class="card"> </button></td>
+                    <td><button id="1" onclick="retourner(1)" class="card"> </button></td>
+                    <td><button id="2" onclick="retourner(2)" class="card"> </button></td>
+                    <td><button id="3" onclick="retourner(3)" class="card"> </button></td>
+                </tr>
+                <tr>
+                    <td><button id="4" onclick="retourner(4)" class="card"> </button></td>
+                    <td><button id="5" onclick="retourner(5)" class="card"> </button></td>
+                    <td><button id="6" onclick="retourner(6)" class="card"> </button></td>
+                    <td><button id="7" onclick="retourner(7)" class="card"> </button></td>
+                </tr>
+                <tr>
+                    <td><button id="8" onclick="retourner(8)" class="card"> </button></td>
+                    <td><button id="9" onclick="retourner(9)" class="card"> </button></td>
+                    <td><button id="10" onclick="retourner(10)" class="card"> </button></td>
+                    <td><button id="11" onclick="retourner(11)" class="card"> </button></td>
+                </tr>
+                <tr>
+                    <td><button id="12" onclick="retourner(12)" class="card"> </button></td>
+                    <td><button id="13" onclick="retourner(13)" class="card"> </button></td>
+                    <td><button id="14" onclick="retourner(14)" class="card"> </button></td>
+                    <td><button id="15" onclick="retourner(15)" class="card"> </button></td>
+                </tr>
+            </table>
+        </section>
+        <section class="compteur_jeu">
+            <h2 class="succes statistic">Succès : <span id="compteur_succes">0</span></h2>
+            <h2 class="t-restant statistic">Temps : <span id="compteur_chrono"></span>  secondes</h2>
+            <h2 class="mouvement statistic">Mouvements : <span id="compteur_statistic">0</span></h2>
+            <button class="start">Commencer</button>
+        </section>
+    </main>
+    <footer>
+        <p>Jeu éducatif de mémoire</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
