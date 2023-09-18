@@ -60,7 +60,7 @@ function retourner(id) {
         chronometre();
         minuteur = true;
     }
-console.log(compteRebours);
+
     cartesRetournees++;
     if (cartesRetournees == 1) {
         carte1 = document.getElementById(id);
