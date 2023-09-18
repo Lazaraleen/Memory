@@ -77,3 +77,31 @@ footer {
     cursor: not-allowed;
     opacity: 50%;
 }
+
+@media (max-width: 768px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+    }
+
+    h2 {
+        margin: 5px 0;
+    }
+
+    .statistic {
+        padding: 0;
+    }
+
+    .compteur_jeu {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    button {
+        height: 70px;
+        width: 70px;
+    }
+}

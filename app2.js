@@ -31,7 +31,7 @@ let gameoverAudio = new Audio('./sounds/gameover.mp3');
 // ******************* Chrono + message de fin chrono + refresh page **************************************
 
 function chronometre() {
-    setInterval(() => {
+    compteRebours = setInterval(() => {
         timer--;
         compteurChrono.innerHTML = timer;
         if(timer == 0) {
@@ -60,7 +60,7 @@ function retourner(id) {
         chronometre();
         minuteur = true;
     }
-
+console.log(compteRebours);
     cartesRetournees++;
     if (cartesRetournees == 1) {
         carte1 = document.getElementById(id);
@@ -104,8 +104,8 @@ function retourner(id) {
 
         // Si on a les 8 succès, mettre un message et remettre le jeu au début
         if (succes == 8) {
-            winAudio.play();
             clearInterval(compteRebours);
+            winAudio.play();
             Swal.fire({
                 position: 'center',
                 icon: 'success',
