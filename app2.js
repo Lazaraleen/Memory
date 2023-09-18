@@ -1,5 +1,5 @@
 const card = document.querySelectorAll('.card');
-const start = document. querySelector('.start');
+// const start = document. querySelector('.start');
 
 let cartesRetournees = 0;
 let carte1 = null;
@@ -9,7 +9,7 @@ let secondResultat = null;
 let mouvements = 0;
 let succes = 0;
 let minuteur = false;
-let timer = 5;
+let timer = 60;
 let compteRebours = null;
 
 let compteMouvements = document.getElementById('compteur_statistic');
@@ -21,53 +21,8 @@ let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 numeros = numeros.sort(() => {return Math.random()-0.5});
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     startApp();
-// })
-
-// start.addEventListener('click', () => {
-//     chrono();
-// })
-
-// function startApp() {
-//     for (let i=0; i < card.length; i++) {
-//         card[i].disabled = true;
-//     }
-// }
-
-// function deblocCards() {
-//     for (let i=0; i < card.length; i++) {
-//         card[i].disabled = false;
-//     }
-// }
 
 // ******************* Chrono + message de fin chrono + refresh page **************************************
-
-// function chrono() {
-//     deblocCards();
-//     let time = 60;
-//     start.disabled = true;
-//     start.classList.add('disabled');
-//     count = setInterval(() => {
-//         time--;
-//         console.log(time);
-//         compteurChrono.innerHTML = time;
-//         if (time == 0) {
-//             clearInterval(count);
-//             Swal.fire({
-//                 position: 'center',
-//                 icon: 'error',
-//                 title: 'Le temps imparti est fini',
-//                 showConfirmButton: true,
-//             })
-//             .then((result) => {
-//                 if (result.isConfirmed) {
-//                     location.reload();
-//                 }
-//             })
-//         }
-//     }, 1000);
-// }
 
 function chronometre() {
     setInterval(() => {
@@ -83,7 +38,8 @@ function chronometre() {
 function blocCarte() {
     for (let i=0; i < card.length; i++){
         let carteBloquee = document.getElementById(i);
-        carteBloquee.innerHTML = numeros[i];
+        imageBloquee = numeros[i];
+        carteBloquee.innerHTML = `<img src="./images/${imageBloquee}.jpg" alt="">`;
         carteBloquee.disabled = true;
     }
 }
@@ -126,6 +82,7 @@ function retourner(id) {
 
             // Si on a les 8 succès, mettre un message et remettre le jeu au début
             if (succes == 8) {
+                clearInterval(compteRebours);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -146,7 +103,7 @@ function retourner(id) {
                 carte1.disabled = false;
                 carte2.disabled = false;
                 cartesRetournees = 0;
-            }, 1000);
+            }, 800);
         }
     }
 }
