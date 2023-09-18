@@ -36,6 +36,12 @@ function chronometre() {
         compteurChrono.innerHTML = timer;
         if(timer == 0) {
             clearInterval(compteRebours);
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Le temps imparti est fini',
+                showConfirmButton: true,
+            })
             blocCarte();
             gameoverAudio.play();
         }
