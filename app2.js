@@ -20,6 +20,12 @@ let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 // mélanger les cartes
 numeros = numeros.sort(() => {return Math.random()-0.5});
 
+let clicAudio = new Audio('./sounds/clic.mp3');
+let successAudio = new Audio('./sounds/success.mp3');
+let errorAudio = new Audio('./sounds/error.mp3');
+let winAudio = new Audio('./sounds/win.mp3');
+let gameoverAudio = new Audio('./sounds/gameover.mp3');
+
 
 
 // ******************* Chrono + message de fin chrono + refresh page **************************************
@@ -31,6 +37,7 @@ function chronometre() {
         if(timer == 0) {
             clearInterval(compteRebours);
             blocCarte();
+            gameoverAudio.play();
         }
     }, 1000);
 }
@@ -59,6 +66,7 @@ function retourner(id) {
         carte1 = document.getElementById(id);
         premierResultat = numeros[id];
         carte1.innerHTML = `<img src="./images/${premierResultat}.jpg" alt="">`;
+        clicAudio.play();
         // désactiver le premier bouton pour qu'on ne puisse plus le sélectionner
         carte1.disabled = true;
 
@@ -66,6 +74,7 @@ function retourner(id) {
         carte2 = document.getElementById(id);
         secondResultat = numeros[id];
         carte2.innerHTML = `<img src="./images/${secondResultat}.jpg" alt="">`;
+        clicAudio.play();
         carte2.disabled = true;
 
         // augmenter le nombre de mouvements
@@ -79,23 +88,10 @@ function retourner(id) {
             // augmenter le nombre de succès
             succes++;
             compteSucces.innerHTML=succes;
+            successAudio.play();
 
-            // Si on a les 8 succès, mettre un message et remettre le jeu au début
-            if (succes == 8) {
-                clearInterval(compteRebours);
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Tu as gagné !!!',
-                    showConfirmButton: true,
-                })
-                .then((result) => {
-                    if (result.isConfirmed) {
-                        location.reload();
-                    }
-                })
-            }
         } else {
+            errorAudio.play();
             // les valeurs sont différentes, retourner les cartes et continuer à jouer
             setTimeout(() => {
                 carte1.innerHTML=' ';
@@ -104,6 +100,23 @@ function retourner(id) {
                 carte2.disabled = false;
                 cartesRetournees = 0;
             }, 800);
+        }
+
+        // Si on a les 8 succès, mettre un message et remettre le jeu au début
+        if (succes == 8) {
+            winAudio.play();
+            clearInterval(compteRebours);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Tu as gagné !!!',
+                showConfirmButton: true,
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            })
         }
     }
 }
