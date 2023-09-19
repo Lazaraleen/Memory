@@ -42,8 +42,14 @@ function chronometre() {
                 title: 'Le temps imparti est fini',
                 showConfirmButton: true,
             })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            });
             blocCarte();
             gameoverAudio.play();
+            
         }
     }, 1000);
 }
@@ -105,7 +111,7 @@ function retourner(id) {
                 carte1.disabled = false;
                 carte2.disabled = false;
                 cartesRetournees = 0;
-            }, 800);
+            }, 1000);
         }
 
         // Si on a les 8 succès, mettre un message et remettre le jeu au début
