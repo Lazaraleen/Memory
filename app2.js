@@ -79,7 +79,7 @@ function retourner(id) {
         premierResultat = numeros[id];
         carte1.innerHTML = `<img src="./images/${premierResultat}.jpg" alt="">`;
         clicAudio.play();
-        // désactiver le premier bouton pour qu'on ne puisse plus le sélectionner
+        // désactiver le premier bouton pour qu'on ne puisse plus le sélectionner, il faut absolument que la seconde case soit différente de la première
         carte1.disabled = true;
 
     } else if (cartesRetournees == 2) {
